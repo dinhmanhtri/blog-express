@@ -11,13 +11,19 @@ const newUserController = require("./controllers/newUser");
 const storeUserController = require("./controllers/storeUser");
 const loginController = require('./controllers/login');
 const bodyParser = require("body-parser");
+const loginUserController = require("./controllers/loginUser");
+const expressionSession = require("express-session");
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 
 // Định nghĩa một connection
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/my_database", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/my_database", {
+  useNewUrlParser: true
+});
 
 // Khai báo module express-fileUpload
 const fileUpload = require("express-fileupload");
@@ -37,6 +43,11 @@ app.use(customMiddleWare);
 
 const validateMiddleware = require("./middleware/validationMiddleware");
 app.use("posts/store", validateMiddleware);
+
+// Đăng ký expressionSession middleware và truyền vào cấu hình cho middleware
+app.use(expressionSession({
+  secret: "keyboard cat"
+}))
 
 
 app.listen(4000, () => {
@@ -69,3 +80,5 @@ app.get("/auth/register", newUserController);
 app.post("/users/register", storeUserController);
 
 app.get("/auth/login", loginController);
+
+app.post("/users/login", loginUserController);
