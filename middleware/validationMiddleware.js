@@ -1,4 +1,4 @@
-module.exports = (req, res) => {
+module.exports = (req, res, next) => {
   if (
     req.files === null ||
     req.body.title === null ||

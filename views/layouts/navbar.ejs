@@ -18,35 +18,26 @@
         <li class="nav-item">
           <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/post">Sample Post</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">Contact</a>
-        </li>
         <% if(loggedIn) { %>
         <li class="nav-item">
-          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/posts/new"
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/post/new"
             >New Post</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/logout"
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/user/logout"
             >Log out</a
           >
         </li>
         <% } %> 
         <% if(!loggedIn) { %>
         <li class="nav-item">
-          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/register"
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/user/register"
             >New User</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/login">Login</a>
+          <a class="nav-link px-lg-3 py-3 py-lg-4" href="/user/login">Login</a>
         </li>
         <% } %>
       </ul>
