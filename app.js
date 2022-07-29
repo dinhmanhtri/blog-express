@@ -1,5 +1,5 @@
 const express = require("express");
-const app = new express();
+const app = express();
 const expressSession = require("express-session");
 const path = require("path");
 app.set("view engine", "ejs");
@@ -7,17 +7,16 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ type: "application/json" }));
 app.use(express.raw());
-const database = require("./db/connectDb");
+require("./db/connectDb");
 
 const fileUpload = require("express-fileupload");
 app.use(fileUpload());
 
-//Đăng ký thư mục public.....
 app.use(express.static(path.join(__dirname, "public")));
 
-//Tao server
-app.listen(4000, () => {
-  console.log("OK. App listening on port 4000");
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`App listen on port ${PORT}`);
 });
 
 app.use(
@@ -32,13 +31,13 @@ app.use("*", (req, res, next) => {
   next();
 });
 
-const homeRouter = require("./routes/homeRoutes")
+const homeRouter = require("./routes/home.route")
 app.use("/", homeRouter);
 
-const userRouter = require("./routes/userRoutes");
+const userRouter = require("./routes/user.route");
 app.use("/user", userRouter);
 
-const blogPostRouter = require("./routes/blogPostRoutes");
+const blogPostRouter = require("./routes/post.route");
 app.use("/post", blogPostRouter);
 
 app.use((req, res) => res.render("notfound"));

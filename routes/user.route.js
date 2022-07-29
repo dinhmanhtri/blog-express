@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const redirectIfAuthenticatedMiddleware = require("../middleware/redirectIfAuthenticatedMiddleware");
-const userController = require("../controllers/userController");
+const userController = require("../controllers/user.controller");
 
 // login router
 router.get(

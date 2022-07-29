@@ -1,4 +1,4 @@
-const BlogPost = require("../models/BlogPostModel.js");
+const BlogPost = require("../models/post.model.js");
 const path = require("path");
 
 class BlogPostController {

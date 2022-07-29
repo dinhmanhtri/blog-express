@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const User = require("../models/UserModel");
+const User = require("../models/user.model");
 
 class LoginController {
   static getLoginForm = (req, res) => {
